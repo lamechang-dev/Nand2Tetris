@@ -1,0 +1,39 @@
+
+// Code should be the infinte loop to monitor RAM[24576] 
+// 1. Read the contents of RAM[24576] (address KBD)
+// If the register contains not 0, then blacken the screen
+// 
+
+pixel_num = 8192 
+addr_scr = 16384
+addr_kbd = 24576
+
+LOOP
+	if RAM[addr_kbd] is not 0
+		goto KBD_PUSHED
+	else 
+		goto KBD_UNPUSHED
+
+    goto LOOP
+
+
+KBD_PUSHED
+	// update all pixels to -1
+	set i = 0
+	
+	for (i = 0; i <= pixel_num; i++) {
+		RAM[i + addr_scr] = -1
+	}
+	
+	goto LOOP
+
+KBD_UNPUSHED
+	// update all pixels to 0
+	set i = 0
+
+	for (i = 0; i <= pixel_num; i++) {
+		RAM[i + addr_scr] = 0
+	}
+	
+	goto LOOP
+	
