@@ -22,17 +22,43 @@ M=D
     0;JMP   // If D == 0, jump to KBD_UNPUSHED
 
 (KBD_PUSHED)
-    @SCREEN // Address of the screen start (RAM[16384])
-    D=A     // Set D to SCREEN address
+    @i
+    M=0
     @DRAW_BLACK
     0;JMP   // Jump to DRAW_BLACK
 
 (KBD_UNPUSHED)
-    @SCREEN // Address of the screen start (RAM[16384])
-    D=A     // Set D to SCREEN address
+    @i
+    M=0
     @DRAW_WHITE
     0;JMP   // Jump to DRAW_WHITE
 
 (DRAW_BLACK)
-    @SCREEN  // SCREEN start address
-    D=A     // Set D to SCREEN address
+    @i
+    D=M
+    @pixel_num
+    D=M-D
+    @LOOP
+    D;JLT
+    @SCREEN
+    A=D+A
+    M=-1
+    @i
+    MD=M+1
+    @DRAW_BLACK    
+    0;JMP
+
+(DRAW_WHITE)
+    @i
+    D=M
+    @pixel_num
+    D=M-D
+    @LOOP
+    D;JLT
+    @SCREEN
+    A=D+A
+    M=0
+    @i
+    MD=M+1
+    @DRAW_WHITE    
+    0;JMP

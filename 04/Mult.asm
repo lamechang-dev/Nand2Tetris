@@ -22,6 +22,8 @@
     M=1 // i = 1
     @sum
     M=0 // sum = 0    
+    @R2
+    M=0
 
     (LOOP)
         @i
