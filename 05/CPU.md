@@ -1,3 +1,6 @@
+
+## Specification
+
 ### 1つ目のMux16
 
 ```nasm
@@ -47,3 +50,6 @@ out: mux2out
 ```nasm
 
 ```
+
+## Link
+https://drive.google.com/file/d/1IsDnH0t7q_Im491LQ7_5_ajV0CokRbwR/view
